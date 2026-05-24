@@ -51,7 +51,7 @@ class Dispatcher:
             if fallback.success:
                 return fallback
             # Merge errors
-            result.errors.extend(f"Fallback MISC also failed: {'; '.join(fallback.errors)}")
+            result.errors.append(f"Fallback MISC also failed: {'; '.join(fallback.errors)}")
 
         return result
 

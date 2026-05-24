@@ -74,9 +74,10 @@ def solve_command(args: argparse.Namespace) -> int:
     table.add_row("Duration", f"{result['duration']:.1f}s")
     if result["flag"]:
         table.add_row("Flag", f"[bold yellow]{result['flag']}[/bold yellow]")
-    if result["errors"]:
-        table.add_row("Errors", "\n".join(result["errors"]))
     console.print(table)
+    if result["errors"]:
+        for err in result["errors"]:
+            console.print(f"[red]Error:[/red] {err[:200]}")
 
     if args.writeup:
         console.print("\n[bold]Generating writeup...[/bold]")

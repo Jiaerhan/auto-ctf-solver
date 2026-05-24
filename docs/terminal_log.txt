@@ -1,0 +1,17 @@
++-----------------+
+| Auto CTF Solver |
++-----------------+
+                               Solve Results                                
++--------------------------------------------------------------------------+
+| Field    | Value                                                         |
+|----------+---------------------------------------------------------------|
+| Category | pwn                                                           |
+| Success  | False                                                         |
+| Approach | PWN multi-pattern approach (strings ¡ú checksec ¡ú exploit dev) |
+| Duration | 0.8s                                                          |
++--------------------------------------------------------------------------+
+Error: Fallback MISC also failed: name 'd' is not defined
+
+Generating writeup...
+Writeup saved to: 
+D:\CTF\exam\agent2\output\writeups\pwn_challenge_20260525_002520.docx

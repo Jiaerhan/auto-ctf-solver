@@ -18,6 +18,7 @@ venv/
 # Output
 output/
 screenshots/
+!docs/screenshots/
 *.docx
 *.log
 
