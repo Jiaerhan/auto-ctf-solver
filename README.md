@@ -90,11 +90,34 @@ src/auto_ctf/
 - **Screenshot capture**: automatic terminal/web screenshots for writeups
 - **Dual writeup format**: generates both `.docx` (with embedded images) and `.md`
 
+## Token 消耗与额度需求
+
+本项目基于多智能体架构，每次解题通过 Claude API 进行多轮对话交互。Token 消耗主要集中在**多轮对话的上下文累积**环节。
+
+| 难度 | 典型轮数 | 预估 Token/题 | 场景 |
+|---|---|---|---|
+| 简单 | 1 轮 | ~8,000 | strings 直接出 flag |
+| 中等 | 3 轮 | **~40,000** | 标准 BOF + ROP |
+| 困难 | 6-8 轮 | ~120,000 | 堆利用 + seccomp 绕过 |
+| 极难 | 12+ 轮 | ~250,000+ | 内核 / 虚拟机逃逸 |
+
+**月度消耗估算**（高强度备赛：20 次/天，混合难度）：
+
+| 指标 | 数值 |
+|---|---|
+| 日均 Token | ~930,000 |
+| 月均 Token | **~2,790 万** |
+| 约合 API 费用 | ~$84/月（Claude Sonnet 定价） |
+
+> 消耗瓶颈在于长上下文的多智能体协同调用——每次交互携带完整历史，导致输入 Token 随轮次线性增长。
+
+详细分析见 **[docs/TOKEN_USAGE_ANALYSIS.md](docs/TOKEN_USAGE_ANALYSIS.md)**。
+
 ## Requirements
 
 - Python 3.10+
 - Docker (with ctf-tools container)
-- Anthropic API key
+- Anthropic API key (Tier 2+ recommended for sustained use)
 
 ## License
 
